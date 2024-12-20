@@ -1,6 +1,11 @@
 #content {
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
+    @media (width >= 1200px) {
+        grid-template-columns:repeat(5, 1fr);
+    }
+    @media (width < 1200px) {
+        grid-template-columns:repeat(4, 1fr);
+    }
     gap:1rem;
 }
 

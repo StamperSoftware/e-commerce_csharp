@@ -1,0 +1,16 @@
+.card {
+  max-width:230px;
+  min-width:230px;
+  
+  transition: transform 0.2s, box-shadow 0.2s;
+  
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0,0,0,.25);
+  }
+  
+  & a {
+    text-decoration: none;
+    color : black;
+  }
+}

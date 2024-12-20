@@ -1,12 +1,14 @@
 @if (product) {
-    <div class="card">
-        <div class="card-header">
-            {{product.name}}
-        </div>
-        <div class="card-body mt-2">
-            <img height="265px" src="{{product.pictureUrl}}" alt="{{product.name}}" class="card-img-top">
-            <div class="card-text">{{product.price | currency}}</div>
-        </div>
+    <div class="card" title="{{product.name}}">
+        <a routerLink="/shop/{{product.id}}">
+            <div class="card-header text-truncate">
+                {{product.name}}
+            </div>
+            <div class="card-body mt-2">
+                <img width="200" height="200" ngSrc="{{product.pictureUrl}}" alt="{{product.name}}" class="card-img-top">
+                <div class="card-text">{{product.price | currency}}</div>
+            </div>
+        </a>
         <button class="btn text-center card-footer">
             <fa-icon [icon]="faCartPlus"></fa-icon>
             Add to Cart

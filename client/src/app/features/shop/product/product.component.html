@@ -1,1 +1,27 @@
-<p>product works!</p>
+@if(product) {
+    <section class="py-8">
+        <div class="container">
+            <div id="image-container" class="">
+                <img width="70%" src="{{product.pictureUrl}}" alt="{{product.name}}">
+            </div>
+            <div id='product-container' class="">
+                <h1>{{product.name}}</h1>
+                <div class="mt-4 align-items-center gap-4 d-flex">
+                    <p id="amount">{{product.price | currency}}</p>
+                </div>
+                <div id="button-container">
+                    <button class="btn btn-primary">Add To Cart</button>
+                    <div id="quantity-container">
+                        <label for="quantity">Quantity</label>
+                        <input value="1" min=1 id="quantity" type="number"/>
+                    </div>
+                </div>
+                <hr>
+                <p id="description">{{product.description}}</p>
+            </div>
+        </div>
+    </section>
+    
+    
+}
+

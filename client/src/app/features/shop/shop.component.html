@@ -1,54 +1,57 @@
 <div class="container-fluid mt-3">
-    <div class="d-flex align-items-center gap-4">
-        <div class="btn-group">
-            <button class="btn btn-lg btn-outline-primary" (click)="open()">
-                <fa-icon [icon]="filterIcon"></fa-icon>
-                Filter Products
-            </button>
-            <div class="btn-group" ngbDropdown role="group">
-                <button type="button" class="btn btn-outline-primary" ngbDropdownToggle>Sort</button>
-                <div class="dropdown-menu" ngbDropdownMenu>
-                    @for (opt of sortOptions; track opt.value) { 
-                        <button ngbDropdownItem class="{{opt.value === shopParams.sort ? 'highlight':''}}" (click)="setSort(opt.value)">{{opt.name}}</button>
-                    }
+    @if (products) {
+        <div class="d-flex align-items-center gap-4">
+            <div class="btn-group">
+                <button class="btn btn-lg btn-outline-primary" (click)="open()">
+                    <fa-icon [icon]="filterIcon"></fa-icon>
+                    Filter Products
+                </button>
+                <div class="btn-group" ngbDropdown role="group">
+                    <button type="button" class="btn btn-outline-primary" ngbDropdownToggle>Sort</button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                        @for (opt of sortOptions; track opt.value) { 
+                            <button ngbDropdownItem class="{{opt.value === shopParams.sort ? 'highlight':''}}" (click)="setSort(opt.value)">{{opt.name}}</button>
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="d-flex gap-2 align-items-center">
-            <ngb-pagination
-                [collectionSize]="products?.count ?? 0"
-                [(page)]="shopParams.pageNumber"
-                [pageSize]="shopParams.pageSize"
-                [rotate]="true"
-                [ellipses]="false"
-                [boundaryLinks]="true"
-                (pageChange)="getProducts()"
-            />
-            <div class="btn-group" ngbDropdown role="group">
-                <button type="button" class="btn-sm btn btn-outline-primary" ngbDropdownToggle>{{shopParams.pageSize}}</button>
-                <div class="dropdown-menu" ngbDropdownMenu>
-                    <button ngbDropdownItem (click)="setPageSize(5)">5</button>
-                    <button ngbDropdownItem (click)="setPageSize(10)">10</button>
-                    <button ngbDropdownItem (click)="setPageSize(20)">20</button>
-                </div>
-            </div>
-        </div>
-        <div>
-            <form #searchForm="ngForm" (ngSubmit)="onSearchChange()" class="position-relative d-flex w-100 mx-4">
-                <input 
-                    type="search"
-                    placeholder="Search"
-                    name="search"
-                    [(ngModel)]="shopParams.search"
+            <div class="d-flex gap-2 align-items-center">
+                <ngb-pagination
+                    [collectionSize]="products.count"
+                    [(page)]="shopParams.pageNumber"
+                    [pageSize]="shopParams.pageSize"
+                    [rotate]="true"
+                    [ellipses]="false"
+                    [boundaryLinks]="true"
+                    (pageChange)="getProducts()"
                 />
-                <button type="submit" class="me-5"><fa-icon [icon]="searchIcon"></fa-icon></button>
-            </form>
+                <div class="btn-group" ngbDropdown role="group">
+                    <button type="button" class="btn-sm btn btn-outline-primary" ngbDropdownToggle>{{shopParams.pageSize}}</button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                        <button ngbDropdownItem (click)="setPageSize(5)">5</button>
+                        <button ngbDropdownItem (click)="setPageSize(10)">10</button>
+                        <button ngbDropdownItem (click)="setPageSize(20)">20</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <form #searchForm="ngForm" (ngSubmit)="onSearchChange()" class="position-relative d-flex w-100 mx-4">
+                    <input 
+                        type="search"
+                        placeholder="Search"
+                        name="search"
+                        [(ngModel)]="shopParams.search"
+                    />
+                    <button type="submit" class="me-5"><fa-icon [icon]="searchIcon"></fa-icon></button>
+                </form>
+            </div>
+            
+        </div>
+        <div id="content" class="mt-4 col-10 mx-auto">
+            @for (product of products.data; track product.id) {
+                <app-product-item [product]="product" class="mx-auto"></app-product-item>
+            }
         </div>
         
-    </div>
-    <div id="content" class="mt-4">
-        @for (product of products?.data; track product.id) {
-            <app-product-item [product]="product"></app-product-item>
-        }
-    </div>
+    }
 </div>
