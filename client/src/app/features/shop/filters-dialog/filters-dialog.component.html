@@ -1,0 +1,35 @@
+<div id="filters-dialog">
+    <h3 class="text-center">Filters</h3>
+    <hr>
+    <div class="d-flex justify-content-center">
+        <div class="w-50 text-center">
+            <h4 class="text-primary">Brands</h4>
+            <div class="d-flex flex-column align-items-center">
+                @for(brand of shopService.brands; track $index) {
+                    <div class="d-grid w-50 filter-list">
+                        <label class="text-start" for="{{brand}}">{{brand}}</label>
+                        <input type="checkbox" id="{{brand}}" value="{{brand}}" (change)="addToBrands(brand)" [checked]="CheckInList(brand)">   
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="w-50 text-center">
+            <h4 class="text-primary">Types</h4>
+            <div class="d-flex flex-column align-items-center">
+                @for(type of shopService.types; track $index) {
+                    <div class="d-grid w-50 filter-list">
+                        <label class="text-start" for="{{type}}">{{type}}</label>
+                        <input type="checkbox" id="{{type}}" value="{{type}}" (change)="addToTypes(type)" [checked]="CheckInList(type)">
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <hr>
+        
+    <div class="d-flex">
+        <button (click)="applyFilters()" class="btn btn-primary text-center mx-auto">
+            Apply Filters
+        </button>
+    </div>
+</div>

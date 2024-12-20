@@ -1,0 +1,10 @@
+#content {
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1rem;
+}
+
+button.highlight {
+    background-color : rgba(var(--bs-primary-rgb), .25)
+}
+

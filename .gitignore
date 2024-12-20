@@ -485,3 +485,6 @@ $RECYCLE.BIN/
 
 /.idea
 API/appsettings.json
+client/.editorconfig
+/client/.vscode
+/client/ssl
