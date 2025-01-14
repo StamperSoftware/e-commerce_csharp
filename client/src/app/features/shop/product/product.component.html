@@ -10,10 +10,10 @@
                     <p id="amount">{{product.price | currency}}</p>
                 </div>
                 <div id="button-container">
-                    <button class="btn btn-primary">Add To Cart</button>
+                    <button class="btn btn-primary" (click)="cartService.addToCart(product, quantity)">Add To Cart</button>
                     <div id="quantity-container">
                         <label for="quantity">Quantity</label>
-                        <input value="1" min=1 id="quantity" type="number"/>
+                        <input [(ngModel)]="quantity" min=1 id="quantity" type="number"/>
                     </div>
                 </div>
                 <hr>

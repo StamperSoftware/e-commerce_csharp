@@ -31,9 +31,13 @@ section .container {
     font-weight : 500;
   }
   & input {
-    width:45px;
+    width:70px;
     text-align: end;
   }
+  & input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button{ margin-left:.3em;}
+   
+  
+  
 }
 
 #description {

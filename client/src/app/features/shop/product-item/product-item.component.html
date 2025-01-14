@@ -9,7 +9,7 @@
                 <div class="card-text">{{product.price | currency}}</div>
             </div>
         </a>
-        <button class="btn text-center card-footer">
+        <button (click)="cartService.addToCart(product)" class="btn text-center card-footer">
             <fa-icon [icon]="faCartPlus"></fa-icon>
             Add to Cart
         </button>

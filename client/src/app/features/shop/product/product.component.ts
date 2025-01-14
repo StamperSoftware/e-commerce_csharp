@@ -3,12 +3,15 @@ import { ShopService } from "../../../core/services/shop.service";
 import { ActivatedRoute } from "@angular/router";
 import { Product } from "../../../shared/models/products";
 import { CurrencyPipe } from "@angular/common";
+import { CartService } from "../../../core/services/cart.service";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-product',
   standalone: true,
   imports: [
-    CurrencyPipe
+    CurrencyPipe,
+    FormsModule
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
@@ -16,8 +19,9 @@ import { CurrencyPipe } from "@angular/common";
 export class ProductComponent implements OnInit {
   private shopService = inject(ShopService);
   private activatedRoute = inject(ActivatedRoute);
-  
+  cartService = inject(CartService);
   product?:Product;
+  quantity = 1;
   
   ngOnInit(): void {
     this.getProduct();
