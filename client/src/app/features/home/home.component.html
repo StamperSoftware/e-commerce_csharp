@@ -1,1 +1,6 @@
-<p>home works!</p>
+<div>
+    @if (this.accountService.currentUser()) {
+        <h1>Welcome {{ this.accountService.currentUser()?.firstName }}</h1>
+    }
+</div>
+

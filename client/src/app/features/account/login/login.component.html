@@ -1,0 +1,18 @@
+<div id="login-form" class="d-flex">
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="d-flex flex-column gap-3">
+        <div class="d-flex flex-column gap-1">
+            <div class="input-container">
+                <label for="email">Email</label>
+                <input formControlName="email"  type="text" id="email">
+            </div>
+            
+            <div class="input-container">
+                <label for="password">Password</label>
+                <input formControlName="password" type="password" id="password">
+            </div>
+        </div>
+        
+        <button id="login" class="btn btn-primary" type="submit">Login</button>
+    </form>
+</div>

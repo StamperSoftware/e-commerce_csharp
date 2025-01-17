@@ -1,0 +1,20 @@
+<div id="register-form-container" class="container col-3">
+
+    <form id='form-register' class="d-flex flex-column gap-3" novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-floating has-validation d-flex flex-column gap-2" [formGroup]="registerForm">
+            <app-floating-input [required]=true formControlName="firstName" name="firstName" display="First Name"></app-floating-input>
+            <app-floating-input [required]=true formControlName="lastName" name="lastName" display="Last Name"></app-floating-input>
+            <app-floating-input [required]=true formControlName="email" name="email" type='email' display="Email"></app-floating-input>
+            <app-floating-input [required]=true formControlName="password" name="password" type="password" display="Password"></app-floating-input>
+    
+            @if (validationErrors?.length) {
+                <div class="bg-danger p-1">
+                    @for(error of validationErrors; track $index) {
+                        <div>{{error}}</div>
+                    }
+                </div>
+            }
+        </div>
+        <button id="create-account" [disabled]='registerForm.invalid' class="btn btn-primary w-50 align-self-center" type="submit">Create Account</button>
+    </form>
+</div>

@@ -1,11 +1,9 @@
-using System.Security.Claims;
 using API.DTOs;
 using API.Extensions;
 using Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
@@ -34,7 +32,6 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseApiCo
         return Ok(result);
     }
 
-
     [Authorize]
     [HttpPost("logout")]
     public async Task<ActionResult> Logout()
@@ -42,7 +39,6 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseApiCo
         await signInManager.SignOutAsync();
         return NoContent();
     }
-
 
     [HttpGet("user-info")]
     public async Task<ActionResult> GetUserInfo()
@@ -60,7 +56,7 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseApiCo
     }
 
 
-    [HttpGet]
+    [HttpGet("auth-status")]
     public ActionResult GetAuthState()
     {
         return Ok(new
@@ -87,7 +83,6 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseApiCo
         if (!result.Succeeded) return BadRequest("Problem updating address.");
         return Ok(user.Address.ToDto());
     }
-    
     
     
 }

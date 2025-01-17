@@ -12,10 +12,7 @@
                 <app-order-summary></app-order-summary>
             </div>
         } @else {
-            <div>
-                <h1>Cart is Empty</h1>
-                <a routerLink="/shop" class="btn btn-primary">Go to shop?</a>
-            </div>
+            <app-empty-state message="Cart is Empty" redirectUrl="/shop">Go to shop?</app-empty-state>
         }
     </div>
 </section>

@@ -1,0 +1,15 @@
+<div class="form-floating {{wasTouched && 'was-validated'}}">
+    <input class='form-control' (blur)="wasTouched = true" [formControl]="control" [name]="name" [type]='type' [id]='name' [placeholder]='placeholder' [required]="required">
+    <label class="form-label" [for]='name'>{{display}}</label>
+    <div class="valid-feedback">
+        {{validFeedback}}
+    </div>
+    <div class="invalid-feedback">
+        @if (control.hasError('required')) {
+            <p>{{display + ' is required'}}</p>
+        }
+        @if (control.hasError('email')) {
+            <p>Email is invalid</p>
+        }
+    </div>
+</div>
